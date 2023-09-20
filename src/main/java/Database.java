@@ -14,6 +14,18 @@ public class Database {
         superheroList.add(new Superhero(name, realName, superpower, age, strength, isHuman));
     }
 
+    public void deleteSuperhero(String superheroName) {
+        ArrayList<Superhero> superheroesToRemove = new ArrayList<>();
+
+        for (Superhero superhero : superheroList) {
+            if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase())) {
+                superheroesToRemove.add(superhero);
+            }
+        }
+        superheroList.removeAll(superheroesToRemove);
+    }
+
+
     public Superhero getSuperhero(int index) {
         return superheroList.get(index);
     }

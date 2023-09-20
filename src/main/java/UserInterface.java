@@ -65,6 +65,13 @@ public class UserInterface {
 
                 backToMenuMessage();
 
+            } else if (startInput == 5) {
+                deleteSuperhero();
+
+                backToMenuMessage();
+
+                runAgain = scan.next();
+
             } else if (startInput == 9) {
                 runAgain = "n";
             }
@@ -78,6 +85,7 @@ public class UserInterface {
                 "Tryk 2: Vis superhelte liste\n" +
                 "Tryk 3: Søg efter superhelt\n" +
                 "Tryk 4: Rediger superhelt\n" +
+                "Tryk 5: Fjern superhelt\n" +
                 "Tryk 9: Afslut programmet");
     }
 
@@ -237,6 +245,20 @@ public class UserInterface {
     }
     private void printWelcomeMessage() {
         System.out.println("-----Velkommen til superhelte databasen-----");
+    }
+    private void deleteSuperhero() {
+        System.out.println("Her er alle superheltene i databasen:");
+        showSuperheroList();
+
+        System.out.print("Indtast superhelte navn på superhelten du vil fjerne" +
+                " fra databasen: ");
+        scan.nextLine();
+        String superheroToRemoveInput = scan.nextLine();
+
+        database.deleteSuperhero(superheroToRemoveInput);
+
+        System.out.println("Her er den opdaterede liste af superhelte:");
+        showSuperheroList();
     }
 
 }

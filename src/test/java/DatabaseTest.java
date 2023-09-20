@@ -62,5 +62,19 @@ class DatabaseTest {
 
     }
 
+    @Test
+    void DeleteSuperhero() {
+        database.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
+        database.addSuperhero("Peter", "Ole", "ingen superkraft", 12, 3, true);
+        database.addSuperhero("Peter", "Morten", "ingen superkraft", 10, 5, true);
+        database.superheroList.remove(2); // første helt er på index 0.
+        int expected = 2;
+        int actual = database.superheroList.size();
+        assertEquals(expected, actual);
+
+
+    }
+
+
 
 }
