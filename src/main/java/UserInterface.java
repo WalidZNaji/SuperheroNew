@@ -78,7 +78,6 @@ public class UserInterface {
         }
         System.out.println("Programmet er afsluttet.");
     }
-
     private void printStartMenu() {
         System.out.println("---Start menu---");
         System.out.println("Tryk 1: Opret ny superhelt\n" +
@@ -88,7 +87,6 @@ public class UserInterface {
                 "Tryk 5: Fjern superhelt\n" +
                 "Tryk 9: Afslut programmet");
     }
-
     private void createSuperhero() {
         System.out.print("Indtast navn på superhelten: ");
         String nameSuperheroxd = scan.nextLine(); //  Scanner bug. Virker når jeg har en overflødig scanner.
@@ -248,7 +246,7 @@ public class UserInterface {
     }
     private void deleteSuperhero() {
         System.out.println("Her er alle superheltene i databasen:");
-        showSuperheroList();
+        showSuperheroListByName();
 
         System.out.print("Indtast superhelte navn på superhelten du vil fjerne" +
                 " fra databasen: ");
@@ -258,7 +256,14 @@ public class UserInterface {
         database.deleteSuperhero(superheroToRemoveInput);
 
         System.out.println("Her er den opdaterede liste af superhelte:");
-        showSuperheroList();
+        showSuperheroListByName();
+    }
+    private void showSuperheroListByName() {
+        ArrayList<Superhero> superheroes = database.superheroList;
+        System.out.println("Her er alle superhelte i databasen:");
+        for (Superhero superhero : superheroes) {
+            System.out.println(superhero.getName());
+        }
     }
 
 }
