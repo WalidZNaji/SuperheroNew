@@ -1,40 +1,40 @@
 import java.util.ArrayList;
 
-public class Database {
+public class Controller {
+
+    private Database database;
 
 
-    final ArrayList<Superhero> superheroList;
 
-    public Database() {
-        this.superheroList = new ArrayList<>();
-
+    Controller() {
+        this.database = new Database();
 
     }
 
     public void addSuperhero(String name, String realName, String superpower, int age, int strength, boolean isHuman) {
-        superheroList.add(new Superhero(name, realName, superpower, age, strength, isHuman));
+        database.superheroList.add(new Superhero(name, realName, superpower, age, strength, isHuman));
     }
 
     public void deleteSuperhero(String superheroName) {
         ArrayList<Superhero> superheroesToRemove = new ArrayList<>();
 
-        for (Superhero superhero : superheroList) {
+        for (Superhero superhero : database.superheroList) {
             if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase())) {
                 superheroesToRemove.add(superhero);
             }
         }
-        superheroList.removeAll(superheroesToRemove);
+        database.superheroList.removeAll(superheroesToRemove);
     }
 
 
     public Superhero getSuperhero(int index) {
-        return superheroList.get(index);
+        return database.superheroList.get(index);
     }
 
     public ArrayList<Superhero> findSuperhero(String superheroName) {
         ArrayList<Superhero> superheroes = new ArrayList<>();
 
-        for (Superhero superhero : superheroList) {
+        for (Superhero superhero : database.superheroList) {
             if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase())) {
 
                 if (!superheroName.contains(superhero.getName())) {
@@ -45,8 +45,6 @@ public class Database {
     }
 
     public ArrayList<Superhero> getSuperheroList() {
-
-        return superheroList;
+        return database.superheroList;
     }
-
-    }
+}

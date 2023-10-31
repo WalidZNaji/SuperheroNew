@@ -68,11 +68,11 @@ public class Superhero {
     public String toString() {
         String isHumanString = isHuman ? "Superhero is human" : "Superhero is not human";
         return
-                "Name: " + name + "\n" +
+                "\n" + "Name: " + name + "\n" +
                         "RealName: " + realName + "\n" +
                         "Superpower: " + superpower + "\n" +
                         "Age: " + age + "\n" +
                         "Strength: " + strength + "\n" +
-                        "Human?: " + isHumanString + "\n";
+                        "Human?: " + isHumanString + "\n" + "\u2500".repeat(50);
     }
 }

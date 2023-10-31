@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private final Database database;
+    private final Controller controller;
     private final Scanner scan;
 
     public UserInterface() {
 
-        database = new Database();
+        controller = new Controller();
         scan = new Scanner(System.in);
 
     }
@@ -133,7 +133,7 @@ public class UserInterface {
             isHumanSuperhero = false;
         }
 
-        database.addSuperhero(nameSuperhero, realNameSuperhero,
+        controller.addSuperhero(nameSuperhero, realNameSuperhero,
                 superpowerSuperhero, ageSuperhero, strengthSuperhero,
                 isHumanSuperhero);
 
@@ -141,12 +141,12 @@ public class UserInterface {
 
     }
     private void showSuperheroList() {
-        System.out.println(database.superheroList);
+        System.out.println(controller.getSuperheroList());
     }
     private void searchForSuperhero() {
         System.out.print("Indtast søgning: ");
         String søgning = scan.next();
-        System.out.println(database.findSuperhero(søgning));
+        System.out.println(controller.findSuperhero(søgning));
     }
     private void findAndEditSuperhero() {
         //Her kan delvist navn indtastes
@@ -154,7 +154,7 @@ public class UserInterface {
         String brugerInput = scan.nextLine();
 
         // Find person(er)
-        ArrayList<Superhero> søgeResultat = database.findSuperhero(brugerInput);
+        ArrayList<Superhero> søgeResultat = controller.findSuperhero(brugerInput);
         Superhero superheroToEdit = null;
 
         // Søgning finder ingen personer
@@ -235,10 +235,10 @@ public class UserInterface {
         System.out.print("Tilbage til start menuen? [y/n] ");
     }
     private void premadeSuperheroes() {
-        database.addSuperhero("Rico", "Victor Thy", "Skifter personlighed ved indtagelse af alkohol", 23, 9, true);
-        database.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke, Stram", 24, 8, true);
-        database.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
-        database.addSuperhero("TS", "Tommy Skrudstrup", "Dårlig beslutningstager. Altid gør det modsatte af hvad han siger", 38, 8, true);
+        controller.addSuperhero("Rico", "Victor Thy", "Skifter personlighed ved indtagelse af alkohol", 23, 9, true);
+        controller.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke, Stram", 24, 8, true);
+        controller.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
+        controller.addSuperhero("TS", "Tommy Skrudstrup", "Dårlig beslutningstager. Altid gør det modsatte af hvad han siger", 38, 8, true);
     }
     private void printWelcomeMessage() {
         System.out.println("-----Velkommen til superhelte databasen-----");
@@ -252,17 +252,18 @@ public class UserInterface {
         scan.nextLine();
         String superheroToRemoveInput = scan.nextLine();
 
-        database.deleteSuperhero(superheroToRemoveInput);
+        controller.deleteSuperhero(superheroToRemoveInput);
 
         System.out.println("Superhelte listen er nu opdateret.");
         showSuperheroListByName();
     }
     private void showSuperheroListByName() {
-        ArrayList<Superhero> superheroes = database.superheroList;
+        ArrayList<Superhero> superheroes = controller.getSuperheroList();
         System.out.println("Her er alle superhelte i databasen:");
         for (Superhero superhero : superheroes) {
             System.out.println(superhero.getName());
         }
+
     }
 
 }
