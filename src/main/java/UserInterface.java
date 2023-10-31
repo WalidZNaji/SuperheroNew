@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-// Noter: fix  'true' når man finder en helt frem.
 
 public class UserInterface {
 
@@ -245,7 +244,7 @@ public class UserInterface {
         System.out.println("-----Velkommen til superhelte databasen-----");
     }
     private void deleteSuperhero() {
-        System.out.println("Her er alle superheltene i databasen:");
+
         showSuperheroListByName();
 
         System.out.print("Indtast superhelte navn på superhelten du vil fjerne" +
@@ -255,7 +254,7 @@ public class UserInterface {
 
         database.deleteSuperhero(superheroToRemoveInput);
 
-        System.out.println("Her er den opdaterede liste af superhelte:");
+        System.out.println("Superhelte listen er nu opdateret.");
         showSuperheroListByName();
     }
     private void showSuperheroListByName() {
