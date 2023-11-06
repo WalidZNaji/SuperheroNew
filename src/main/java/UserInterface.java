@@ -95,6 +95,8 @@ public class UserInterface {
                 "Tryk 3: Søg efter superhelt\n" +
                 "Tryk 4: Rediger superhelt\n" +
                 "Tryk 5: Fjern superhelt\n" +
+                "Tryk 6: Gem dine superhelte\n" +
+                "Tryk 7: Load dine superhelte\n" +
                 "Tryk 9: Afslut programmet");
     }
     private void createSuperhero() {

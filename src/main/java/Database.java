@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Database {
 
     Filehandler filehandler = new Filehandler();
 
     final ArrayList<Superhero> superheroList;
+   
 
     public Database() {
         this.superheroList = new ArrayList<>();
@@ -52,6 +54,16 @@ public class Database {
     public ArrayList<Superhero> getSuperheroList() {
 
         return superheroList;
+    }
+
+    //cvs
+    public void saveToCVS (ArrayList<Superhero> superHeroListe){
+        filehandler.saveSuperHeroToCVS(superHeroListe);
+    }
+
+    public ArrayList<Superhero> loadFromCVS(){
+        return filehandler.loadSuperheroesFromCVS();
+
     }
 
     }
