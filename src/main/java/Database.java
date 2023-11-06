@@ -10,8 +10,6 @@ public class Database {
 
     public Database() {
         this.superheroList = new ArrayList<>();
-
-
     }
 
     public void addSuperhero(String name, String realName, String superpower, int age, int strength, boolean isHuman) {
