@@ -71,7 +71,18 @@ public class UserInterface {
 
                 runAgain = scan.next();
 
-            } else if (startInput == 9) {
+            } else if (startInput == 6) {
+
+                saveHeroToCVS();
+                System.out.println("Superheltene er nu gemt til cvs filen");
+
+            }else if (startInput==7){
+
+                System.out.println("Superheltene er nu loaded");
+                loadHeroesFromCVS();
+
+            }
+            else if (startInput == 9) {
                 runAgain = "n";
             }
         }
@@ -137,7 +148,10 @@ public class UserInterface {
                 superpowerSuperhero, ageSuperhero, strengthSuperhero,
                 isHumanSuperhero);
 
-        System.out.println("Superhelt tilføjet til databasen.");
+        System.out.println("Gå tilbage til start menuen for at gemme superhelten");
+
+
+
 
     }
     private void showSuperheroList() {
@@ -236,7 +250,7 @@ public class UserInterface {
     }
     private void premadeSuperheroes() {
         controller.addSuperhero("Rico", "Victor Thy", "Skifter personlighed ved indtagelse af alkohol", 23, 9, true);
-        controller.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke, Stram", 24, 8, true);
+        controller.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke", 24, 8, true);
         controller.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
         controller.addSuperhero("TS", "Tommy Skrudstrup", "Dårlig beslutningstager. Altid gør det modsatte af hvad han siger", 38, 8, true);
     }
@@ -266,4 +280,12 @@ public class UserInterface {
 
     }
 
+    private void loadHeroesFromCVS() {
+        ArrayList<Superhero> heroList = controller.loadFromCVS();
+        controller.getSuperheroList().clear();
+        controller.addSuperheroFromCVS(heroList);
+    }
+    public void saveHeroToCVS() {
+        controller.saveToCVS(controller.getSuperheroList());
+    }
 }

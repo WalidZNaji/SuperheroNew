@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Controller {
 
@@ -16,14 +17,7 @@ public class Controller {
     }
 
     public void deleteSuperhero(String superheroName) {
-        ArrayList<Superhero> superheroesToRemove = new ArrayList<>();
-
-        for (Superhero superhero : database.superheroList) {
-            if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase())) {
-                superheroesToRemove.add(superhero);
-            }
-        }
-        database.superheroList.removeAll(superheroesToRemove);
+        database.deleteSuperhero(superheroName);
     }
 
 

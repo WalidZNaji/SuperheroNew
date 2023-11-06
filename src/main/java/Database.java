@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Database {
 
+    Filehandler filehandler = new Filehandler();
 
     final ArrayList<Superhero> superheroList;
 
@@ -13,6 +14,10 @@ public class Database {
 
     public void addSuperhero(String name, String realName, String superpower, int age, int strength, boolean isHuman) {
         superheroList.add(new Superhero(name, realName, superpower, age, strength, isHuman));
+    }
+    public void addSuperheroList(ArrayList<Superhero> heroListFromCVS) {
+        superheroList.clear();
+        superheroList.addAll(heroListFromCVS);
     }
 
     public void deleteSuperhero(String superheroName) {
