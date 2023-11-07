@@ -41,7 +41,9 @@ public class UserInterface {
 
                 createSuperhero();
 
+
                 backToMenuMessage();
+
 
                 runAgain = scan.next();
 
@@ -71,16 +73,6 @@ public class UserInterface {
                 backToMenuMessage();
 
                 runAgain = scan.next();
-
-            } else if (startInput == 6) {
-
-                saveHeroToCVS();
-                System.out.println("Superheltene er nu gemt til cvs filen");
-
-            }else if (startInput==7){
-
-                System.out.println("Superheltene er nu loaded");
-                loadHeroesFromCVS();
 
             }
             else if (startInput == 9) {
@@ -134,6 +126,7 @@ public class UserInterface {
                 System.out.println("Ugyldigt svar. Indtast styrkeniveau fx. '2300'");
                 scan.nextLine();
             }
+            break;
         }
 
         System.out.print("Er superhelten et menneske? [y/n] ");
