@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+// TODO Fjern premade, lav vis super til at loade fra cvs med det samme.
 public class UserInterface {
 
     private final Controller controller;
@@ -16,8 +16,7 @@ public class UserInterface {
     }
 
     public void startProgram() {
-
-        premadeSuperheroes();
+        loadHeroesFromCVS();
 
         String runAgain = "y";
 
@@ -39,6 +38,7 @@ public class UserInterface {
             }
 
             if (startInput == (1)) {
+
                 createSuperhero();
 
                 backToMenuMessage();
@@ -46,6 +46,7 @@ public class UserInterface {
                 runAgain = scan.next();
 
             } else if (startInput == 2) {
+
                 showSuperheroList();
 
                 backToMenuMessage();
@@ -150,13 +151,12 @@ public class UserInterface {
                 superpowerSuperhero, ageSuperhero, strengthSuperhero,
                 isHumanSuperhero);
 
-        System.out.println("Gå tilbage til start menuen for at gemme superhelten");
-
-
-
+        saveHeroToCVS();
 
     }
     private void showSuperheroList() {
+      //  controller.getSuperheroList().clear();
+      //  controller.loadFromCVS();
         System.out.println(controller.getSuperheroList());
     }
     private void searchForSuperhero() {
@@ -250,12 +250,13 @@ public class UserInterface {
     private void backToMenuMessage() {
         System.out.print("Tilbage til start menuen? [y/n] ");
     }
-    private void premadeSuperheroes() {
+    /*private void premadeSuperheroes() {
         controller.addSuperhero("Rico", "Victor Thy", "Skifter personlighed ved indtagelse af alkohol", 23, 9, true);
         controller.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke", 24, 8, true);
         controller.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
         controller.addSuperhero("TS", "Tommy Skrudstrup", "Dårlig beslutningstager. Altid gør det modsatte af hvad han siger", 38, 8, true);
     }
+     */
     private void printWelcomeMessage() {
         System.out.println("-----Velkommen til superhelte databasen-----");
     }
@@ -283,11 +284,30 @@ public class UserInterface {
     }
 
     private void loadHeroesFromCVS() {
-        ArrayList<Superhero> heroList = controller.loadFromCVS();
-        controller.getSuperheroList().clear();
-        controller.addSuperheroFromCVS(heroList);
+        controller.loadFromCVS();
+
     }
     public void saveHeroToCVS() {
-        controller.saveToCVS(controller.getSuperheroList());
+        String runAgain = "y";
+        String input;
+        System.out.println("Vil du gemme superhelten til cvs filen/databasen? [y/n]");
+        input = scan.next();
+        while(runAgain.equalsIgnoreCase("y")) {
+
+            if (input.equalsIgnoreCase("y")) {
+                controller.saveToCVS(controller.getSuperheroList());
+                runAgain="n";
+            } else if (input.equalsIgnoreCase("n")) {
+                System.out.println("Superhelten blev ikke gemt.");
+                runAgain="n";
+            } else {
+                System.out.println("Ugyldigt input. Prøv igen? [y/n]");
+                runAgain = scan.next();
+            }
+
+        }
+    }
+    public void clearSuperheroList() {
+        controller.getSuperheroList().clear();
     }
 }

@@ -5,8 +5,11 @@ public class Database {
 
     Filehandler filehandler = new Filehandler();
 
-    final ArrayList<Superhero> superheroList;
-   
+    ArrayList<Superhero> superheroList = getSuperheroListFromCVS();
+
+   public ArrayList<Superhero> getSuperheroListFromCVS (){
+        return filehandler.getSuperheroesInCVSList();
+    }
 
     public Database() {
         this.superheroList = new ArrayList<>();
@@ -59,9 +62,9 @@ public class Database {
         filehandler.saveSuperHeroToCVS(superHeroListe);
     }
 
-    public ArrayList<Superhero> loadFromCVS(){
-        return filehandler.loadSuperheroesFromCVS();
-
+    public void loadFromCVS(){
+        superheroList = filehandler.loadSuperheroesFromCVS();
     }
+
 
     }

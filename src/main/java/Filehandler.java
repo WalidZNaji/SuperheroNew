@@ -7,6 +7,11 @@ import java.util.Scanner;
 
 public class Filehandler {
     PrintStream fileWriter;
+
+    public ArrayList<Superhero> getSuperheroesInCVSList() {
+        return superheroesInCVSList;
+    }
+
     ArrayList<Superhero> superheroesInCVSList = new ArrayList<>();
 
     File file = new File("Superheroes.cvs");

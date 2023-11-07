@@ -45,14 +45,18 @@ public class Controller {
         database.saveToCVS(superHeroListe);
     }
 
-    public ArrayList<Superhero> loadFromCVS(){
-        return database.loadFromCVS();
+    public void loadFromCVS(){
+        database.loadFromCVS();
 
     }
     public void addSuperheroFromCVS(ArrayList<Superhero> heroListFromCVS){
         database.superheroList.clear();
         database.addSuperheroList(heroListFromCVS);
     }
+
+    /*public ArrayList<Superhero> getSuperheroListFromCVS() {
+    return database.getSuperheroListFromCVS();
+    }*/
 
 
 }
