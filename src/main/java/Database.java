@@ -7,6 +7,8 @@ public class Database {
 
     ArrayList<Superhero> superheroList = getSuperheroListFromCVS();
 
+    private boolean dataChanged = false;
+
    public ArrayList<Superhero> getSuperheroListFromCVS (){
         return filehandler.getSuperheroesInCVSList();
     }
@@ -17,10 +19,12 @@ public class Database {
 
     public void addSuperhero(String name, String realName, String superpower, int age, int strength, boolean isHuman) {
         superheroList.add(new Superhero(name, realName, superpower, age, strength, isHuman));
+        dataChanged=true;
     }
     public void addSuperheroList(ArrayList<Superhero> heroListFromCVS) {
         superheroList.clear();
         superheroList.addAll(heroListFromCVS);
+        dataChanged=true;
     }
 
     public void deleteSuperhero(String superheroName) {
@@ -31,6 +35,7 @@ public class Database {
                 superheroesToRemove.add(superhero);
             }
         }
+        dataChanged=true;
         superheroList.removeAll(superheroesToRemove);
     }
 
@@ -58,10 +63,13 @@ public class Database {
     }
 
     //cvs
-    public void saveToCVS (ArrayList<Superhero> superHeroListe){
-        filehandler.saveSuperHeroToCVS(superHeroListe);
-    }
+    public void saveToCVS (ArrayList<Superhero> superHeroListe) {
 
+        if (dataChanged) {
+            filehandler.saveSuperHeroToCVS(superHeroListe);
+            dataChanged = false;
+        }
+    }
     public void loadFromCVS(){
         superheroList = filehandler.loadSuperheroesFromCVS();
     }
