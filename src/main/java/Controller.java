@@ -32,22 +32,21 @@ public class Controller {
     public ArrayList<Superhero> getSuperheroList() {
         return database.superheroList;
     }
-    public void saveToCVS (ArrayList<Superhero> superHeroListe){
-        database.saveToCVS(superHeroListe);
+    public void saveToCSV (ArrayList<Superhero> superHeroListe){
+        database.saveToCSV(superHeroListe);
     }
 
-    public void loadFromCVS(){
-        database.loadFromCVS();
+    public void loadFromCSV(){
+        database.loadFromCSV();
 
     }
-    public void addSuperheroFromCVS(ArrayList<Superhero> heroListFromCVS){
+    public void addSuperheroFromCSV(ArrayList<Superhero> heroListFromCSV){
         database.superheroList.clear();
-        database.addSuperheroList(heroListFromCVS);
+        database.addSuperheroList(heroListFromCSV);
     }
 
-    /*public ArrayList<Superhero> getSuperheroListFromCVS() {
-    return database.getSuperheroListFromCVS();
+    /*public ArrayList<Superhero> getSuperheroListFromCSV() {
+    return database.getSuperheroListFromCSV();
     }*/
-
 
 }

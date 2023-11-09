@@ -8,15 +8,15 @@ import java.util.Scanner;
 public class Filehandler {
     PrintStream fileWriter;
 
-    public ArrayList<Superhero> getSuperheroesInCVSList() {
-        return superheroesInCVSList;
+    public ArrayList<Superhero> getSuperheroesInCSVList() {
+        return superheroesInCSVList;
     }
 
-    ArrayList<Superhero> superheroesInCVSList = new ArrayList<>();
+    ArrayList<Superhero> superheroesInCSVList = new ArrayList<>();
 
-    File file = new File("Superheroes.cvs");
+    File file = new File("Superheroes.csv");
 
-        public void saveSuperHeroToCVS (ArrayList<Superhero> superheroList) {
+        public void saveSuperHeroToCSV (ArrayList<Superhero> superheroList) {
             try {
                 fileWriter = new PrintStream(file);
                 for (Superhero superhero : superheroList) {
@@ -31,7 +31,7 @@ public class Filehandler {
             }
         }
 
-        public ArrayList<Superhero> loadSuperheroesFromCVS() {
+        public ArrayList<Superhero> loadSuperheroesFromCSV() {
             try {
 
                 Scanner fileReader = new Scanner(file);
@@ -48,10 +48,10 @@ public class Filehandler {
                             Integer.parseInt(attributes[4].trim()),
                             Boolean.parseBoolean(attributes[5].trim()));
 
-                    superheroesInCVSList.add(superhero);
+                    superheroesInCSVList.add(superhero);
 
                 } fileReader.close();
-                return superheroesInCVSList;
+                return superheroesInCSVList;
 
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);

@@ -16,7 +16,7 @@ public class UserInterface {
 
     public void startProgram() {
 
-        loadHeroesFromCVS();
+        loadHeroesFromCSV();
 
         String runAgain = "y";
 
@@ -147,7 +147,7 @@ public class UserInterface {
                 superpowerSuperhero, ageSuperhero, strengthSuperhero,
                 isHumanSuperhero);
 
-        saveHeroToCVS();
+        saveHeroToCSV();
 
     }
     private void showSuperheroList() {
@@ -249,7 +249,7 @@ public class UserInterface {
                 if (!nyVærdi.isEmpty()) {
                     superheroToEdit.setStrength(Integer.parseInt(nyVærdi));
                 }
-                System.out.println(superheroToEdit + " er opdateret.");
+                System.out.println("Opdateret superhelt:\n" + superheroToEdit);
             }
         }
     }
@@ -289,19 +289,19 @@ public class UserInterface {
 
     }
 
-    private void loadHeroesFromCVS() {
-        controller.loadFromCVS();
+    private void loadHeroesFromCSV() {
+        controller.loadFromCSV();
 
     }
-    public void saveHeroToCVS() {
+    public void saveHeroToCSV() {
         String runAgain = "y";
         String input;
-        System.out.println("Vil du gemme superhelten til cvs filen/databasen? [y/n]");
+        System.out.println("Vil du gemme superhelten til csv filen/databasen? [y/n]");
         input = scan.next();
         while(runAgain.equalsIgnoreCase("y")) {
 
             if (input.equalsIgnoreCase("y")) {
-                controller.saveToCVS(controller.getSuperheroList());
+                controller.saveToCSV(controller.getSuperheroList());
                 runAgain="n";
             } else if (input.equalsIgnoreCase("n")) {
                 System.out.println("Superhelten blev ikke gemt.");
