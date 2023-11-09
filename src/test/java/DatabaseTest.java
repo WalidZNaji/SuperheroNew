@@ -18,19 +18,19 @@ class DatabaseTest {
 
     @Test
      void addSuperheroTest() { // Test metode for indsættelse af én superhelt
-        int expected = database.superheroList.size() + 1;
+        int expected = database.getSuperheroList().size() + 1;
         database.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke, Stram", 24, 8, true);
-        int actual = database.superheroList.size();
+        int actual = database.getSuperheroList().size();
         assertEquals(expected, actual);
     }
 
     @Test
     void addMultipleSuperheroesTest() { // Test metode for indsættelse af flere superhelte.
-        int expected = database.superheroList.size() + 3;
+        int expected = database.getSuperheroList().size() + 3;
         database.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke, Stram", 24, 8, true);
         database.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
         database.addSuperhero("TS", "Tommy Skrudstrup", "Dårlig beslutningstager. Altid gør det modsatte af hvad han siger", 38, 8, true);
-        int actual = database.superheroList.size();
+        int actual = database.getSuperheroList().size();
         assertEquals(expected, actual);
     }
 
@@ -67,9 +67,9 @@ class DatabaseTest {
         database.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
         database.addSuperhero("Peter", "Ole", "ingen superkraft", 12, 3, true);
         database.addSuperhero("Peter", "Morten", "ingen superkraft", 10, 5, true);
-        database.superheroList.remove(2); // første helt er på index 0.
+        database.getSuperheroList().remove(2); // første helt er på index 0.
         int expected = 2;
-        int actual = database.superheroList.size();
+        int actual = database.getSuperheroList().size();
         assertEquals(expected, actual);
 
 

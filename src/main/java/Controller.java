@@ -26,17 +26,8 @@ public class Controller {
     }
 
     public ArrayList<Superhero> findSuperhero(String superheroName) {
-        ArrayList<Superhero> superheroes = new ArrayList<>();
-
-        for (Superhero superhero : database.superheroList) {
-            if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase())) {
-
-                if (!superheroName.contains(superhero.getName())) {
-                    superheroes.add(superhero);
-                }
-            }
-        } return superheroes;
-    }
+        return database.findSuperhero(superheroName);
+        }
 
     public ArrayList<Superhero> getSuperheroList() {
         return database.superheroList;

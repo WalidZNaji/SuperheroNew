@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-// TODO Fjern premade, lav vis super til at loade fra cvs med det samme.
 public class UserInterface {
 
     private final Controller controller;
@@ -16,6 +15,7 @@ public class UserInterface {
     }
 
     public void startProgram() {
+
         loadHeroesFromCVS();
 
         String runAgain = "y";
@@ -34,6 +34,9 @@ public class UserInterface {
             int startInput = scan.nextInt();
 
             if (startInput > 9) {
+                System.out.println("Indtast et tal mellem 1-9: ");
+            }
+            if (startInput < 1) {
                 System.out.println("Indtast et tal mellem 1-9: ");
             }
 
@@ -148,14 +151,24 @@ public class UserInterface {
 
     }
     private void showSuperheroList() {
-      //  controller.getSuperheroList().clear();
-      //  controller.loadFromCVS();
         System.out.println(controller.getSuperheroList());
     }
     private void searchForSuperhero() {
-        System.out.print("Indtast søgning: ");
+        System.out.print("Indtast superhelte navn: ");
         String søgning = scan.next();
-        System.out.println(controller.findSuperhero(søgning));
+
+        ArrayList<Superhero> result = controller.findSuperhero(søgning);
+
+        for (Superhero superhero:result) {
+            System.out.println(superhero.getName() + ", " +
+                    superhero.getRealName() + ", " +
+                    superhero.getSuperpower() + ", " +
+                    superhero.getAge() + " år, " +
+                    superhero.getStrength() + " powerlevel, " +
+                    superhero.isHuman());
+        }
+
+
     }
     private void findAndEditSuperhero() {
         //Her kan delvist navn indtastes
@@ -167,7 +180,7 @@ public class UserInterface {
         Superhero superheroToEdit = null;
 
         // Søgning finder ingen personer
-        if (søgeResultat.size() == 0) {
+        if (søgeResultat.isEmpty()) {
             System.out.println("Der findes ingen superhelte der opfylder søgekriterium");
 
         } else if (søgeResultat.size() > 1) {
@@ -300,7 +313,5 @@ public class UserInterface {
 
         }
     }
-    public void clearSuperheroList() {
-        controller.getSuperheroList().clear();
-    }
+
 }

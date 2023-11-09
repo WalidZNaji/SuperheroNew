@@ -48,14 +48,17 @@ public class Database {
         ArrayList<Superhero> superheroes = new ArrayList<>();
 
         for (Superhero superhero : superheroList) {
-            if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase())) {
-
+            if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase()))
+                superheroes.add(superhero);
+            }
+            return superheroes;
+/*
                 if (!superheroName.contains(superhero.getName())) {
                     superheroes.add(superhero);
                 }
-            }
-        } return superheroes;
-    }
+
+ */
+        }
 
     public ArrayList<Superhero> getSuperheroList() {
 
