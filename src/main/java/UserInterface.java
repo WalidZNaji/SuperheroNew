@@ -8,79 +8,46 @@ public class UserInterface {
     private final Scanner scan;
 
     public UserInterface() {
-
         controller = new Controller();
         scan = new Scanner(System.in);
-
     }
 
     public void startProgram() {
-
         loadHeroesFromCSV();
 
         String runAgain = "y";
 
         printWelcomeMessage();
 
-        while (runAgain.equalsIgnoreCase("y")) {
-
+        while ("y".equalsIgnoreCase(runAgain)) {
             printStartMenu();
+            int startInput = getStartInput();
 
-            while (!scan.hasNextInt()) {
-                scan.nextLine();
-                System.out.print("Indtast et tal mellem 1-9: ");
+            switch (startInput) {
+                case 1:
+                    createSuperhero();
+                    break;
+                case 2:
+                    showSuperheroList();
+                    break;
+                case 3:
+                    searchForSuperhero();
+                    break;
+                case 4:
+                    findAndEditSuperhero();
+                    break;
+                case 5:
+                    deleteSuperhero();
+                    break;
+                case 9:
+                    runAgain = "n";
+                    break;
             }
-
-            int startInput = scan.nextInt();
-
-            if (startInput > 9) {
-                System.out.println("Indtast et tal mellem 1-9: ");
+            if ("n".equalsIgnoreCase(runAgain)) {
+                break;
             }
-            if (startInput < 1) {
-                System.out.println("Indtast et tal mellem 1-9: ");
-            }
-
-            if (startInput == (1)) {
-
-                createSuperhero();
-
-
-                backToMenuMessage();
-
-
-                runAgain = scan.next();
-
-            } else if (startInput == 2) {
-
-                showSuperheroList();
-
-                backToMenuMessage();
-
-                runAgain = scan.next();
-
-            } else if (startInput == 3) {
-                searchForSuperhero();
-
-                backToMenuMessage();
-
-                runAgain = scan.next();
-
-            } else if (startInput == 4) {
-                findAndEditSuperhero();
-
-                backToMenuMessage();
-
-            } else if (startInput == 5) {
-                deleteSuperhero();
-
-                backToMenuMessage();
-
-                runAgain = scan.next();
-
-            }
-            else if (startInput == 9) {
-                runAgain = "n";
-            }
+            backToMenuMessage();
+            runAgain = scan.next();
         }
         System.out.println("Programmet er afsluttet.");
     }
@@ -256,13 +223,6 @@ public class UserInterface {
     private void backToMenuMessage() {
         System.out.print("Tilbage til start menuen? [y/n] ");
     }
-    /*private void premadeSuperheroes() {
-        controller.addSuperhero("Rico", "Victor Thy", "Skifter personlighed ved indtagelse af alkohol", 23, 9, true);
-        controller.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke", 24, 8, true);
-        controller.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
-        controller.addSuperhero("TS", "Tommy Skrudstrup", "Dårlig beslutningstager. Altid gør det modsatte af hvad han siger", 38, 8, true);
-    }
-     */
     private void printWelcomeMessage() {
         System.out.println("-----Velkommen til superhelte databasen-----");
     }
@@ -291,7 +251,6 @@ public class UserInterface {
 
     private void loadHeroesFromCSV() {
         controller.loadFromCSV();
-
     }
     public void saveHeroToCSV() {
         String runAgain = "y";
@@ -313,5 +272,23 @@ public class UserInterface {
 
         }
     }
+    public int getStartInput() {
+        int startInput = 0;
+        while (true) {
+            try {
+                startInput = scan.nextInt();
+                if (startInput >= 1 && startInput <= 9)
+                    break;
+                else {
+                    System.out.print("Indtast et tal mellem 1-9: ");
+                }
+            } catch (InputMismatchException e) {
+                System.out.print("Indtast et tal mellem 1-9: ");
+                scan.nextLine();
+            }
+        }
+        return startInput;
+    }
+
 
 }

@@ -13,7 +13,7 @@ public class Controller {
     }
 
     public void addSuperhero(String name, String realName, String superpower, int age, int strength, boolean isHuman) {
-        database.superheroList.add(new Superhero(name, realName, superpower, age, strength, isHuman));
+        database.addSuperhero(name,realName,superpower, age, strength, isHuman);
     }
 
     public void deleteSuperhero(String superheroName) {
@@ -40,13 +40,4 @@ public class Controller {
         database.loadFromCSV();
 
     }
-    public void addSuperheroFromCSV(ArrayList<Superhero> heroListFromCSV){
-        database.superheroList.clear();
-        database.addSuperheroList(heroListFromCSV);
-    }
-
-    /*public ArrayList<Superhero> getSuperheroListFromCSV() {
-    return database.getSuperheroListFromCSV();
-    }*/
-
 }

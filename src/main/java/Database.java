@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Database {
 
@@ -52,12 +51,6 @@ public class Database {
                 superheroes.add(superhero);
             }
             return superheroes;
-/*
-                if (!superheroName.contains(superhero.getName())) {
-                    superheroes.add(superhero);
-                }
-
- */
         }
 
     public ArrayList<Superhero> getSuperheroList() {
