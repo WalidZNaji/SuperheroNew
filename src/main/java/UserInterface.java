@@ -246,6 +246,7 @@ public class UserInterface {
                     superheroToEdit.setStrength(Integer.parseInt(nyVærdi));
                 }
                 System.out.println("Opdateret superhelt:\n" + superheroToEdit);
+
             }
             saveHeroToCSV();
         }
@@ -303,7 +304,7 @@ public class UserInterface {
             }
 
         }
-    }
+            }
     public int getStartInput() {
         int startInput = 0;
         while (true) {

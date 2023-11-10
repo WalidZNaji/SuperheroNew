@@ -23,12 +23,6 @@ public class Database {
         dataChanged = true;
     }
 
-    public void addSuperheroList(ArrayList<Superhero> heroListFromCSV) {
-        superheroList.clear();
-        superheroList.addAll(heroListFromCSV);
-        dataChanged = true;
-    }
-
     public void deleteSuperhero(String superheroName) {
 
         ArrayList<Superhero> superheroesToRemove = new ArrayList<>();
@@ -42,16 +36,13 @@ public class Database {
         superheroList.removeAll(superheroesToRemove);
     }
 
-    public Superhero getSuperhero(int index) {
-        return superheroList.get(index);
-    }
-
     public ArrayList<Superhero> findSuperhero(String superheroName) {
         ArrayList<Superhero> superheroes = new ArrayList<>();
 
         for (Superhero superhero : superheroList) {
             if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase()))
                 superheroes.add(superhero);
+            dataChanged=true;
         }
         return superheroes;
     }
