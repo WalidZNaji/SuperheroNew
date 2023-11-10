@@ -30,6 +30,7 @@ public class Database {
     }
 
     public void deleteSuperhero(String superheroName) {
+
         ArrayList<Superhero> superheroesToRemove = new ArrayList<>();
 
         for (Superhero superhero : superheroList) {
@@ -40,7 +41,6 @@ public class Database {
         dataChanged = true;
         superheroList.removeAll(superheroesToRemove);
     }
-
 
     public Superhero getSuperhero(int index) {
         return superheroList.get(index);
