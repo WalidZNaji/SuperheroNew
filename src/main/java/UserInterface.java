@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class UserInterface {
 
@@ -24,24 +22,12 @@ public class UserInterface {
             int startInput = getStartInput();
 
             switch (startInput) {
-                case 1:
-                    createSuperhero();
-                    break;
-                case 2:
-                    showSuperheroList();
-                    break;
-                case 3:
-                    searchForSuperhero();
-                    break;
-                case 4:
-                    findAndEditSuperhero();
-                    break;
-                case 5:
-                    deleteSuperhero();
-                    break;
-                case 9:
-                    runAgain = "n";
-                    break;
+                case 1 -> createSuperhero();
+                case 2 -> showSuperheroList();
+                case 3 -> searchForSuperhero();
+                case 4 -> findAndEditSuperhero();
+                case 5 -> deleteSuperhero();
+                case 9 -> runAgain = "n";
             }
             if ("n".equalsIgnoreCase(runAgain)) {
                 break;
@@ -118,7 +104,55 @@ public class UserInterface {
 
     }
     private void showSuperheroList() {
-        System.out.println(controller.getSuperheroList());
+    String runAgain = "y";
+    while (runAgain.equalsIgnoreCase("y")) {
+        System.out.println("1. Default sorting by name.\n2. Sort by single attribute" +
+                "\n3. Sort by primary and secondary attribute \n" +
+                "4. Exit sorting menu");
+        System.out.print("Enter input [1/2/3/4]: ");
+        int choice = scan.nextInt();
+
+        switch (choice) {
+            case 1 ->
+                System.out.println(controller.getSortedHeroes(1, 0));
+
+            case 2 -> {
+                System.out.println("Vælg sorterings parameter");
+                System.out.println("1. Superhero name\n2. Real name\n3. Superpower\n4. Age\n" +
+                        "5. Strength\n6. Hero is Human");
+                int sorteringsParameter = scan.nextInt();
+
+                System.out.println(controller.getSortedHeroesOneAttribute(sorteringsParameter));
+
+            }
+            case 3 -> {
+                System.out.println("Vælg primær attribut sortering af superheltene:");
+                System.out.println("1. Superhero name\n2. Real name\n3. Superpower\n4. Age\n" +
+                        "5. Strength\n6. Hero is Human");
+                int primærSortering = scan.nextInt();
+
+
+                System.out.println("Vælg sekundær attribut sortering af superheltene:");
+                System.out.println("1. Superhero name\n2. Real name\n3. Superpower\n4. Age\n" +
+                        "5. Strength\n6. Humanity");
+
+                int sekundærSortering = scan.nextInt();
+
+
+                System.out.println(controller.getSortedHeroes(primærSortering,
+                        sekundærSortering));
+            }
+            case 4 -> {
+                System.out.println("Exiting sorting menu");
+                runAgain = "n";
+            }
+            default -> System.out.println("Invalid input. Try again");
+        }
+    }
+
+
+
+
     }
     private void searchForSuperhero() {
         System.out.print("Indtast superhelte navn: ");
@@ -239,6 +273,7 @@ public class UserInterface {
 
         System.out.println("Superhelte listen er nu opdateret.");
         showSuperheroListByName();
+        saveHeroToCSV();
     }
     private void showSuperheroListByName() {
         ArrayList<Superhero> superheroes = controller.getSuperheroList();
