@@ -7,7 +7,7 @@ public class Controller {
 
 
 
-    Controller() {
+    public Controller() {
         this.database = new Database();
 
     }
