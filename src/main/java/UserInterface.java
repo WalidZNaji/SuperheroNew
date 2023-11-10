@@ -290,7 +290,7 @@ public class UserInterface {
     public void saveHeroToCSV() {
         String runAgain = "y";
         String input;
-        System.out.println("Vil du gemme superhelten til csv filen/databasen? [y/n]");
+        System.out.println("Vil du opdatere csv filen/databasen? [y/n]");
         input = scan.next();
         while(runAgain.equalsIgnoreCase("y")) {
 

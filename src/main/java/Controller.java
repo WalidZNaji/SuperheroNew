@@ -40,4 +40,11 @@ public class Controller {
         database.loadFromCSV();
 
     }
+
+    public ArrayList<Superhero> getSortedHeroes(int primaryAttribute, int secondaryAttribute) {
+        return database.getSortedSuperheroes(primaryAttribute, secondaryAttribute);
+    }
+    public ArrayList<Superhero> getSortedHeroesOneAttribute(int sortingChoice){
+        return database.getSortedSuperheroesOneAttribute(sortingChoice);
+    }
 }
