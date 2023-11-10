@@ -168,12 +168,10 @@ public class UserInterface {
                     superhero.getStrength() + " powerlevel, " +
                     superhero.isHuman());
         }
-
-
     }
     private void findAndEditSuperhero() {
-        //Her kan delvist navn indtastes
-        System.out.println("Indtast søgekriterium for superhelt");
+
+        System.out.println("Indtast nummer for superhelt");
         String brugerInput = scan.nextLine();
 
         // Find person(er)
@@ -211,13 +209,10 @@ public class UserInterface {
                 } catch (InputMismatchException e) {
                     System.out.print("Ugyldigt input. Indtast et tal fx. '1': ");
                     scan.nextLine();
+
                 }
             }
 
-        }
-        //Søgning finder én person
-        else {
-            superheroToEdit = søgeResultat.get(0);
         }
 
         // Redigering af valgte personer
@@ -252,7 +247,9 @@ public class UserInterface {
                 }
                 System.out.println("Opdateret superhelt:\n" + superheroToEdit);
             }
+            saveHeroToCSV();
         }
+
     }
     private void backToMenuMessage() {
         System.out.print("Tilbage til start menuen? [y/n] ");

@@ -57,9 +57,9 @@ public class Database {
     }
 
     public ArrayList<Superhero> getSuperheroList() {
-
         return superheroList;
     }
+
 
     //csv
     public void saveToCSV(ArrayList<Superhero> superHeroListe) {
