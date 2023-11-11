@@ -280,7 +280,8 @@ public class UserInterface {
     }
 
     private void loadHeroesFromCSV() {
-        controller.loadFromCSV();
+       ArrayList<Superhero> loadedHeroes = controller.loadFromCSV();
+       controller.loadFromCSV();
     }
     public void saveHeroToCSV() {
         String runAgain = "y";

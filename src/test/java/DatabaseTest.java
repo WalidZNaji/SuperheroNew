@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +17,11 @@ class DatabaseTest {
         database = new Database();
     }
 
+    private void createTestSuperheroes() {
+        database.addSuperhero("Menig Hoijer", "Mads Teglskov", "Superstyrke", 24, 8, true);
+        database.addSuperhero("AC", "Anders kristensen", "Retard strength", 31, 6, true);
+        database.addSuperhero("TS", "Tommy Skrudstrup", "Dårlig beslutningstager. Altid gør det modsatte af hvad han siger", 38, 8, true);
+    }
 
     @Test
      void addSuperheroTest() { // Test metode for indsættelse af én superhelt
@@ -71,10 +78,60 @@ class DatabaseTest {
         int expected = 2;
         int actual = database.getSuperheroList().size();
         assertEquals(expected, actual);
-
-
     }
 
 
+       /*Sortering af navn ved brug af getSuperheroesOneAttribute, derefter manuel sortering af
+       superheltelisten, efter navn, derefter en verificering af at de stemmer overens med hinanden. */
+    @Test
+    void testGetSuperheroesOneAttribute() {
+        int sortingChoice = 1;
 
+        ArrayList<Superhero> sortedList = database.getSortedSuperheroesOneAttribute(sortingChoice);
+
+        ArrayList<Superhero> originalList = new ArrayList<>(database.getSuperheroList());
+        switch (sortingChoice) {
+            case 1 -> Collections.sort(originalList, Comparator.comparing(Superhero::getName));
+            case 2 -> Collections.sort(originalList, Comparator.comparing(Superhero::getRealName));
+        }
+        assertEquals(originalList, sortedList);
+    }
+
+    @Test
+    void testGetSortedSuperheroes() {
+        int primarySortingChoice = 1;
+        int secondarySortingChoice = 2;
+
+        ArrayList<Superhero> sortedList = database.getSortedSuperheroes(primarySortingChoice, secondarySortingChoice);
+
+        ArrayList<Superhero> originalList = new ArrayList<>(database.getSuperheroList());
+
+        // Manuel sortering af den primære attribut
+        switch (primarySortingChoice) {
+            case 1 -> Collections.sort(originalList, Comparator.comparing(Superhero::getName));
+            case 2 -> Collections.sort(originalList, Comparator.comparing(Superhero::getRealName));
+            case 3 -> Collections.sort(originalList, Comparator.comparing(Superhero::getSuperpower));
+            case 4 -> Collections.sort(originalList, Comparator.comparing(Superhero::getAge));
+            case 5 -> Collections.sort(originalList, Comparator.comparing(Superhero::getStrength));
+            case 6 -> Collections.sort(originalList, Comparator.comparing(Superhero::isHuman));
+            default -> {
+                System.out.println("Invalid primary sorting choice. Defaulting to sorting by name.");
+                Collections.sort(originalList, Comparator.comparing(Superhero::getName));
+            }
+        }
+
+        // Manuel sortering af den sekundære attribut
+        switch (secondarySortingChoice) {
+            case 1 -> Collections.sort(originalList, Comparator.comparing(Superhero::getName));
+            case 2 -> Collections.sort(originalList, Comparator.comparing(Superhero::getRealName));
+            case 3 -> Collections.sort(originalList, Comparator.comparing(Superhero::getSuperpower));
+            case 4 -> Collections.sort(originalList, Comparator.comparing(Superhero::getAge));
+            case 5 -> Collections.sort(originalList, Comparator.comparing(Superhero::getStrength));
+            case 6 -> Collections.sort(originalList, Comparator.comparing(Superhero::isHuman));
+            default -> System.out.println("Invalid secondary sorting choice. Ignoring secondary sorting.");
+        }
+
+        // Assert that the sorted list matches the manually sorted list
+        assertEquals(originalList, sortedList);
+    }
 }

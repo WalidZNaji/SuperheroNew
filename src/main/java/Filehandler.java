@@ -33,7 +33,6 @@ public class Filehandler {
 
         public ArrayList<Superhero> loadSuperheroesFromCSV() {
             try {
-
                 Scanner fileReader = new Scanner(file);
                 fileReader.nextLine(); // Header
                 while (fileReader.hasNext()) {

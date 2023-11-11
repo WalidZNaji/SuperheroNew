@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Controller {
 
@@ -36,9 +35,9 @@ public class Controller {
         database.saveToCSV(superHeroListe);
     }
 
-    public void loadFromCSV(){
+    public ArrayList<Superhero> loadFromCSV(){
         database.loadFromCSV();
-
+        return null;
     }
 
     public ArrayList<Superhero> getSortedHeroes(int primaryAttribute, int secondaryAttribute) {

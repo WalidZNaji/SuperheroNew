@@ -18,11 +18,13 @@ public class Database {
         this.superheroList = new ArrayList<>();
     }
 
+    // Tested
     public void addSuperhero(String name, String realName, String superpower, int age, int strength, boolean isHuman) {
         superheroList.add(new Superhero(name, realName, superpower, age, strength, isHuman));
         dataChanged = true;
     }
 
+    // Tested
     public void deleteSuperhero(String superheroName) {
 
         ArrayList<Superhero> superheroesToRemove = new ArrayList<>();
@@ -36,6 +38,7 @@ public class Database {
         superheroList.removeAll(superheroesToRemove);
     }
 
+    // Tested
     public ArrayList<Superhero> findSuperhero(String superheroName) {
         ArrayList<Superhero> superheroes = new ArrayList<>();
 
@@ -65,7 +68,7 @@ public class Database {
         superheroList = filehandler.loadSuperheroesFromCSV();
     }
 
-    public ArrayList<Superhero> getSortedSuperheroesOneAttribute(int sortingchoice) {
+    public ArrayList<Superhero> getSortedSuperheroesOneAttribute(int sortingchoice) { // Tested
         ArrayList<Superhero> superheroesOneAttribute = new ArrayList<>(superheroList);
 
         switch (sortingchoice) {
