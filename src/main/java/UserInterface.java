@@ -106,10 +106,10 @@ public class UserInterface {
     private void showSuperheroList() {
     String runAgain = "y";
     while (runAgain.equalsIgnoreCase("y")) {
-        System.out.println("1. Default sorting by name.\n2. Sort by single attribute" +
-                "\n3. Sort by primary and secondary attribute \n" +
-                "4. Exit sorting menu");
-        System.out.print("Enter input [1/2/3/4]: ");
+        System.out.println("1. Sorter ved navn.\n2. Sorter ved én attribut" +
+                "\n3. Sorter ved primær og sekundær attribut \n" +
+                "4. Afslut sorterings menu");
+        System.out.print("Indtast [1/2/3/4]: ");
         int choice = scan.nextInt();
 
         switch (choice) {
@@ -143,15 +143,12 @@ public class UserInterface {
                         sekundærSortering));
             }
             case 4 -> {
-                System.out.println("Exiting sorting menu");
+                System.out.println("Afslutter sorterings menu");
                 runAgain = "n";
             }
-            default -> System.out.println("Invalid input. Try again");
+            default -> System.out.println("Ugyldigt svar. Prøv igen.");
         }
     }
-
-
-
 
     }
     private void searchForSuperhero() {

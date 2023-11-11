@@ -76,7 +76,7 @@ public class Database {
             case 5 -> Collections.sort(superheroesOneAttribute, Comparator.comparing(Superhero::getStrength));
             case 6 -> Collections.sort(superheroesOneAttribute, Comparator.comparing(Superhero::isHuman));
             default -> {
-                System.out.println("Invalid primary sorting choice. Defaulting to sorting by name.");
+                System.out.println("Ugyldig primær sortering. Sorterer ved navn: ");
                 Collections.sort(superheroesOneAttribute, Comparator.comparing(Superhero::getName));
             }
             }
