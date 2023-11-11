@@ -20,9 +20,11 @@ public class Filehandler {
             try {
                 fileWriter = new PrintStream(file);
                 for (Superhero superhero : superheroList) {
-                   String linje = superhero.getName() + "," +  superhero.getRealName() + "," +
-                           superhero.getSuperpower() + "," + superhero.getAge() + "," + superhero.getStrength() +
-                           "," + superhero.isHuman();
+                   String linje = superhero.getName() + "," +
+                           superhero.getRealName() + "," +
+                           superhero.getSuperpower() + "," +
+                           superhero.getAge() + "," + superhero.getStrength() + "," +
+                           superhero.isHuman();
                     fileWriter.println(linje);
                 }
                 fileWriter.close();
@@ -34,7 +36,10 @@ public class Filehandler {
         public ArrayList<Superhero> loadSuperheroesFromCSV() {
             try {
                 Scanner fileReader = new Scanner(file);
-                fileReader.nextLine(); // Header
+
+                if (!fileReader.hasNextLine()) {
+                }
+
                 while (fileReader.hasNext()) {
                     String linje = fileReader.nextLine();
                     String[] attributes = linje.split(",");
