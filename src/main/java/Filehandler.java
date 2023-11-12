@@ -35,6 +35,7 @@ public class Filehandler {
 
         public ArrayList<Superhero> loadSuperheroesFromCSV() {
             try {
+                superheroesInCSVList.clear();
                 Scanner fileReader = new Scanner(file);
 
                 if (!fileReader.hasNextLine()) {
